@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     get '/settings' => 'users/registrations#edit'
   end
   root 'pages#index'
+
+  get "/dashboard" => 'dashboards#index'
 end
