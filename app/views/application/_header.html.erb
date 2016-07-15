@@ -1,0 +1,75 @@
+<nav class="navbar navbar-default navbar-kldx">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%#= link_to image_tag('logo-metros.png', alt: "Metros.Events", class: "navbar-brand"), root_path %>
+      <%= link_to "KLDX", root_path, class: "navbar-brand kldx-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-kldx">
+            <li><%= link_to "History", "" %></li>
+            <li><%= link_to "Organisation", "" %></li>
+            <li><%= link_to "Calendar", "" %></li>
+            <li><%= link_to "Video", "" %></li>
+          </ul>
+        </li>
+        <li><%= link_to "Merchandise", "" %></li>
+        <li><%= link_to "Store", "" %></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="social-links hidden-sm">
+          <%= link_to "https://www.facebook.com/Kuala-Lumpur-DX-Team-KLDX-738425046219166/", target: "_blank", title: "Like us on Facebook" do %>
+            <i class="fa fa-facebook-official"></i>
+          <% end %>
+          <%= link_to "https://instagram.com/kldxteam", target: "_blank", title: "Follow us on Instagram" do %>
+            <i class="fa fa-instagram"></i>
+          <% end %>
+          <%= link_to "https://www.youtube.com/AmirolAhmad", target: "_blank", title: "Subscribe our Youtube Channel" do %>
+            <i class="fa fa-youtube-square"></i>
+          <% end %>
+        </li>
+        <% if !user_signed_in? %>
+          <li class="login-link">
+            <%= link_to login_path do %>
+              <i class="fa fa-lock"></i>
+              Log In
+            <% end %>
+          </li>
+          <li class="register-link">
+            <%= link_to register_path do %>
+              <i class="fa fa-user"></i>
+              Sign Up
+            <% end %>
+          </li>
+        <% else %>
+          <li class="dropdown user-details">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <%# if current_user.profile.try(:avatar?) %>
+    						<%#= image_tag(current_user.profile.avatar_url(:avatar), class: "img-circle", alt: "#{current_user.email}", height: 35, width: 35) %>
+    					<%# else %>
+    						<%= image_tag('avatar-default-lg.png', class: "img-circle", alt: "#{current_user.email}", height: 35, width: 35) %>
+    					<%# end %>
+              <%= current_user.username %> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-kldx">
+              <li><%= link_to "Go to dashboard", dashboard_path %></li>
+              <!-- <li><%#= link_to "My profile", edit_account_path %></li> -->
+              <li><%= link_to "Account settings", settings_path %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, method: "delete" %></li>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
