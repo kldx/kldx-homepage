@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   get "/dashboard" => 'dashboards#index'
+
+  resources :articles
 end

@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validate :validate_username
   validates :username, :presence => true, :uniqueness => { :case_sensitive => false }
 
+  has_many :articles
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
